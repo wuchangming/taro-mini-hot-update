@@ -1350,7 +1350,7 @@
     "@babel/runtime" "^7.14.5"
     "@tarojs/runtime" "3.4.1"
 
-"@tarojs/cli@^3.4.1":
+"@tarojs/cli@3.4.1":
   version "3.4.1"
   resolved "https://registry.npmmirror.com/@tarojs/cli/-/cli-3.4.1.tgz#766fb3312bc6ea906ba7d26395eccd8820c58304"
   integrity sha512-Dy8k1DkwAmrqZidDj6GTOjaUr0NKc/W+ZQtD/WyNL/7OpPOm9jVKiSeS9Rf3SL+EJKAjE0BqpVefYT+M3iswMg==
