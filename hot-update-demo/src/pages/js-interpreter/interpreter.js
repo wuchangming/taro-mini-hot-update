@@ -1,3 +1,7 @@
+/* eslint-disable no-shadow */
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-unused-vars */
+import * as acorn from 'acorn'
 /**
  * @license
  * Copyright 2013 Google LLC
@@ -18,7 +22,7 @@
  *     global scope object.
  * @constructor
  */
-var Interpreter = function(code, opt_initFunc) {
+const Interpreter = function(code, opt_initFunc) {
   if (typeof code === 'string') {
     code = this.parse_(code, 'code');
   }
@@ -175,6 +179,7 @@ Interpreter.vm = null;
  * `globalThis`, but older systems use `this`.
  */
 Interpreter.nativeGlobal =
+    // eslint-disable-next-line no-undef
     (typeof globalThis === 'undefined') ? this : globalThis;
 
 /**
@@ -4433,7 +4438,7 @@ Interpreter.prototype['stepWhileStatement'] =
 // Preserve top-level API functions from being pruned/renamed by JS compilers.
 // Add others as needed.
 // The global object (`window` in a browser, `global` in node.js) is `this`.
-this['Interpreter'] = Interpreter;
+// this['Interpreter'] = Interpreter;
 Interpreter.prototype['step'] = Interpreter.prototype.step;
 Interpreter.prototype['run'] = Interpreter.prototype.run;
 Interpreter.prototype['appendCode'] = Interpreter.prototype.appendCode;
@@ -4452,3 +4457,4 @@ Interpreter.prototype['getGlobalScope'] = Interpreter.prototype.getGlobalScope;
 Interpreter.prototype['getStateStack'] = Interpreter.prototype.getStateStack;
 Interpreter.prototype['setStateStack'] = Interpreter.prototype.setStateStack;
 
+export default Interpreter
