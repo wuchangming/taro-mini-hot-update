@@ -3715,6 +3715,8 @@ Interpreter.prototype['stepCallExpression'] = function(stack, state, node) {
       var callback = function(value) {
         state.value = value;
         thisInterpreter.paused_ = false;
+        // fix: 小程序中异步方法完成后不会继续执行「暂时先这么处理，需要优化」
+        thisInterpreter.run()
       };
       // Force the argument lengths to match, then append the callback.
       var argLength = func.asyncFunc.length - 1;
