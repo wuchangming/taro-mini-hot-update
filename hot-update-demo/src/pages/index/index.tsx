@@ -5,6 +5,7 @@ import { globalObjectTest } from '../test-interpreter/globalObjectTest'
 import { basicUsageTest } from '../test-interpreter/basicUsageTest'
 import { addObjectToGlobalObjectTest } from '../test-interpreter/addObjectToGlobalObjectTest'
 import { asynchronousTest } from '../test-interpreter/AsynchronousTest'
+import { FuncComponent, functionComponentTest } from '../test-interpreter/functionComponentTest'
 
 class Index extends Component {
     render() {
@@ -32,6 +33,8 @@ class Index extends Component {
                 >
                     asynchronousTest
                 </Button>
+                {functionComponentTest()}
+                <FuncComponent displayTitle></FuncComponent>
             </View>
         )
     }
