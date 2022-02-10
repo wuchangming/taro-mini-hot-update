@@ -1,7 +1,7 @@
 /* eslint-disable no-shadow */
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-unused-vars */
-import * as acorn from 'acorn'
+import * as acorn from './acorn'
 /**
  * @license
  * Copyright 2013 Google LLC
