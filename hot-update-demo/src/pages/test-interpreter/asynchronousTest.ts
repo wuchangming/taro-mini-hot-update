@@ -24,7 +24,7 @@ export function asynchronousTest(ms: number) {
         )
     }
 
-    var myInterpreter = new Interpreter(
+    const myInterpreter = new Interpreter(
         `
     toast('${ms}ms 和 ${2 * ms}ms 后弹出 wake up')
     var x = sleep(${ms}); 

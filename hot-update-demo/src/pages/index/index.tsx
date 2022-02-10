@@ -7,23 +7,13 @@ import { addObjectToGlobalObjectTest } from '../test-interpreter/addObjectToGlob
 import { asynchronousTest } from '../test-interpreter/AsynchronousTest'
 
 class Index extends Component {
-    componentWillMount() {}
-
-    componentDidMount() {}
-
-    componentWillUnmount() {}
-
-    componentDidShow() {}
-
-    componentDidHide() {}
-
     render() {
         return (
             <View className='index'>
                 <Button onClick={basicUsageTest}>basicUsageTest</Button>
                 <Button
                     onClick={() => {
-                        globalObjectTest('Hello js-interpreter!')
+                        globalObjectTest('Hello taro-mini-hot-update!')
                     }}
                 >
                     globalObjectTest

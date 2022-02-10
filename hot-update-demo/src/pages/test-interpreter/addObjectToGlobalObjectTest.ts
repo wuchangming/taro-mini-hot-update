@@ -2,10 +2,10 @@ import Taro from '@tarojs/taro'
 import Interpreter from '../js-interpreter/interpreter'
 
 export function addObjectToGlobalObjectTest() {
-    var myCode = 'Taro.showToast(Taro.version);'
-    var initFunc = function(interpreter, globalObject) {
+    const myCode = 'Taro.showToast(Taro.version);'
+    const initFunc = function(interpreter, globalObject) {
         // Create 'Taro' global object.
-        var PseudoTaro = interpreter.nativeToPseudo({})
+        const PseudoTaro = interpreter.nativeToPseudo({})
         interpreter.setProperty(globalObject, 'Taro', PseudoTaro)
 
         // Define 'Taro.version' property.
@@ -20,6 +20,6 @@ export function addObjectToGlobalObjectTest() {
             })
         )
     }
-    var myInterpreter = new Interpreter(myCode, initFunc)
+    const myInterpreter = new Interpreter(myCode, initFunc)
     myInterpreter.run()
 }

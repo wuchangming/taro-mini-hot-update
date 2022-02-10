@@ -1,7 +1,13 @@
+import Taro from '@tarojs/taro'
 import Interpreter from '../js-interpreter/interpreter'
 
 export function basicUsageTest() {
-    const myInterpreter = new Interpreter('6 * 7')
+    const code = '6 * 7'
+    const myInterpreter = new Interpreter(code)
     myInterpreter.run()
-    console.log('basicUsageTest result: ',  myInterpreter.value)
+
+    Taro.showToast({
+        icon: 'none',
+        title: `${code} = ${myInterpreter.value}`,
+    })
 }
