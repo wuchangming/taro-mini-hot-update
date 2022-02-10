@@ -8,6 +8,9 @@ import { asynchronousTest } from '../test-interpreter/AsynchronousTest'
 import { FuncComponent, functionComponentTest } from '../test-interpreter/functionComponentTest'
 
 class Index extends Component {
+    state = {
+        displayTitle: true,
+    }
     render() {
         return (
             <View className='index'>
@@ -33,8 +36,17 @@ class Index extends Component {
                 >
                     asynchronousTest
                 </Button>
-                {functionComponentTest()}
-                <FuncComponent displayTitle></FuncComponent>
+                <Button
+                    onClick={() => {
+                        this.setState({
+                            displayTitle: !this.state.displayTitle,
+                        })
+                    }}
+                >
+                    toggle Title
+                </Button>
+                {functionComponentTest(this.state.displayTitle)}
+                <FuncComponent displayTitle={this.state.displayTitle}></FuncComponent>
             </View>
         )
     }

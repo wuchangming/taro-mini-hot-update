@@ -7,7 +7,6 @@ export const reactPolyfill = `
     };
     var React = {
         createElement: function(component, props) {
-            
             return [
                 component,
                 props,

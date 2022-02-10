@@ -1,8 +1,7 @@
 import { View, Text } from '@tarojs/components'
-import { ReactInterpreter } from '../react-interpreter/ReactInterPreter'
+import { renderJSComponent } from '../react-interpreter/renderJSComponent'
 
 /**
-
 JSX: 内容
 */
 
@@ -10,7 +9,7 @@ export function FuncComponent(props: { displayTitle: boolean }) {
     return (
         <View style={{ backgroundColor: 'red' }}>
             {props.displayTitle === true ? <Text>This is Title</Text> : null}
-            <Text> --- 通过常规代码动态生成</Text>
+            <Text> --- 通过常规代码生成</Text>
         </View>
     )
 }
@@ -35,13 +34,10 @@ function FuncComponent(props) {
   );
 }
 `
-const propsString = `
-{
-    displayTitle: true
-}
-`
 
-export function functionComponentTest() {
-    const componentElement = ReactInterpreter.renderComponent(code, propsString)
+export function functionComponentTest(displayTitle: boolean) {
+    const componentElement = renderJSComponent(code, {
+        displayTitle,
+    })
     return componentElement
 }
