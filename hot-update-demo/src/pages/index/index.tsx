@@ -3,6 +3,8 @@ import { View, Button } from '@tarojs/components'
 import './index.less'
 import { globalObjectTest } from '../test-interpreter/globalObjectTest'
 import { basicUsageTest } from '../test-interpreter/basicUsageTest'
+import { addObjectToGlobalObjectTest } from '../test-interpreter/addObjectToGlobalObjectTest'
+import { asynchronousTest } from '../test-interpreter/AsynchronousTest'
 
 class Index extends Component {
     componentWillMount() {}
@@ -25,6 +27,20 @@ class Index extends Component {
                     }}
                 >
                     globalObjectTest
+                </Button>
+                <Button
+                    onClick={() => {
+                        addObjectToGlobalObjectTest()
+                    }}
+                >
+                    addObjectToGlobalObjectTest
+                </Button>
+                <Button
+                    onClick={() => {
+                        asynchronousTest(3000)
+                    }}
+                >
+                    asynchronousTest
                 </Button>
             </View>
         )
