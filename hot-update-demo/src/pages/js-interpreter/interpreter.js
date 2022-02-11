@@ -2,6 +2,8 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-unused-vars */
 import * as acorn from 'acorn'
+import * as jsx from 'acorn-jsx'
+
 /**
  * @license
  * Copyright 2013 Google LLC
@@ -322,14 +324,14 @@ Interpreter.prototype.appendCodeNumber_ = 0;
  * @return {!Object} AST.
  * @private
  */
-Interpreter.prototype.parse_ = function(code, sourceFile) {
+Interpreter.prototype.parse_ = function (code, sourceFile) {
    // Create a new options object, since Acorn will modify this object.
    var options = {};
    for (var name in Interpreter.PARSE_OPTIONS) {
      options[name] = Interpreter.PARSE_OPTIONS[name];
    }
    options['sourceFile'] = sourceFile;
-   return acorn.parse(code, options);
+    return acorn.Parser.extend(jsx()).parse(code, options);
 };
 
 /**
@@ -376,8 +378,12 @@ Interpreter.prototype.step = function() {
     } catch (e) {
       // Eat any step errors.  They have been thrown on the stack.
       if (e !== Interpreter.STEP_ERROR) {
-        // Uh oh.  This is a real error in the JS-Interpreter.  Rethrow.
-        throw e;
+        if(type) {
+          throw new Error(`${type} are not supported.`)
+        } else {
+          // Uh oh.  This is a real error in the JS-Interpreter.  Rethrow.
+          throw e;
+        }
       }
     }
     if (nextState) {
