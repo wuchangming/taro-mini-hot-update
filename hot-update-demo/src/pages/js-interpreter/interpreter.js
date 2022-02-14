@@ -2,7 +2,6 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-unused-vars */
 import * as acorn from 'acorn'
-import * as jsx from 'acorn-jsx'
 
 /**
  * @license
@@ -330,7 +329,7 @@ Interpreter.prototype.parse_ = function(code, sourceFile) {
         options[name] = Interpreter.PARSE_OPTIONS[name]
     }
     options['sourceFile'] = sourceFile
-    return acorn.Parser.extend(jsx()).parse(code, options)
+    return acorn.parse(code, options)
 }
 
 /**

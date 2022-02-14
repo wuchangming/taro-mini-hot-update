@@ -43,7 +43,6 @@
     "@tarojs/taro": "3.4.1",
     "acorn": "8.7.0",
     "acorn-jsx": "5.3.2",
-    "astring": "^1.8.1",
     "mobx": "^4.8.0",
     "mobx-react": "^6.1.4",
     "react": "^17.0.0",

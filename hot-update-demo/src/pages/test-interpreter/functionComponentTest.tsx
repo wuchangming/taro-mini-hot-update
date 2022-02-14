@@ -20,7 +20,7 @@ export function FuncComponent(props: { displayTitle: boolean }) {
 
 const code = `
 function FuncComponent(props) {
-  return /*#__PURE__*/ React.createElement(
+  return React.createElement(
     View,
     {
       style: {
@@ -28,9 +28,9 @@ function FuncComponent(props) {
       }
     },
     props.displayTitle === true
-      ? /*#__PURE__*/ React.createElement(Text, null, "This is Title")
+      ? React.createElement(Text, null, "This is Title")
       : null,
-    /*#__PURE__*/ React.createElement(Text, null, " --- 通过字符串代码动态生成")
+    React.createElement(Text, null, " --- 通过字符串代码动态生成")
   );
 }
 `
