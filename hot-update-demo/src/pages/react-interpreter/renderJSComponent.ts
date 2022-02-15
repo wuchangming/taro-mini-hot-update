@@ -3,6 +3,10 @@ import { arrayToRealComponent } from './arrayToRealComponent'
 import { reactPolyfill } from './reactPolyfill'
 
 export function renderJSComponent<T>(code: string, props?: T) {
+    code = code
+        .trim()
+        .replace(/^\"use strict\";/, '')
+        .replace(/^\'use strict\';/, '')
     const polyfill = reactPolyfill
     const exeCode = `
             (function () {
@@ -13,7 +17,7 @@ export function renderJSComponent<T>(code: string, props?: T) {
         `
 
     const interpreter = new Interpreter(exeCode)
-    
+
     interpreter.run()
 
     const components = JSON.parse(interpreter.value)
