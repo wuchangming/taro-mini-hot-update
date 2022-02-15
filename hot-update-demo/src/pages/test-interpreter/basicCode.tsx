@@ -4,18 +4,23 @@ JSX: 内容
 
 // function FuncComponent(props: { displayTitle: boolean }) {
 //     return (
-//         <View style={{ backgroundColor: 'red' }}>
+//         <View
+//             style={{ backgroundColor: 'red' }}
+//             onPress={() => {
+//                 toast('props.displayTitle = ' + props.displayTitle)
+//             }}
+//         >
 //             {props.displayTitle === true ? <Text>This is Title</Text> : null}
-//             <Text> --- 通过常规代码生成</Text>
+//             <Text> --- 通过字符串代码生成</Text>
 //         </View>
 //     )
 // }
-
 /*
 下面为 Babel 转换后
  */
 
 export const basicCode = `
+
 function FuncComponent(props) {
   return /*#__PURE__*/ React.createElement(
     View,
@@ -23,8 +28,8 @@ function FuncComponent(props) {
       style: {
         backgroundColor: "red"
       },
-      onClick: function () {
-        toast('props.displayTitle = ' + props.displayTitle);
+      onClick: function onClick() {
+        toast("props.displayTitle = " + props.displayTitle);
       }
     },
     props.displayTitle === true
@@ -37,4 +42,6 @@ function FuncComponent(props) {
     )
   );
 }
+
+
 `
