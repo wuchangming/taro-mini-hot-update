@@ -1,10 +1,13 @@
+import { polyfillComponents } from './polyfillComponents'
+
 export const reactPolyfill = `
-    var View = {
-        type: 'View'
-    };
-    var Text = {
-        type: 'Text'
-    };
+    ${Object.keys(polyfillComponents)
+        .map(k => {
+            return `var ${k} = {
+              type: "${k}"
+            };`
+        })
+        .join('')}
     var React = {
         createElement: function(component, props) {
             return [

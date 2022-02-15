@@ -1,14 +1,14 @@
 import React from 'react'
-import { View, Text } from '@tarojs/components'
+import { polyfillComponents } from './polyfillComponents'
 
 type SupportType = {
-    type: 'View' | 'Text'
+    type: keyof typeof polyfillComponents
 }
 
 export type CompObj = [SupportType | string, object | null, CompObj[]]
 
 export function arrayToRealComponent(compObj: CompObj) {
-    if (compObj === null || typeof compObj === 'string' ) {
+    if (compObj === null || typeof compObj === 'string') {
         return compObj
     }
 
@@ -21,16 +21,7 @@ export function arrayToRealComponent(compObj: CompObj) {
     const props = compObj[1]
     const children = compObj[2]
 
-    let Comp: React.ComponentType
-
-    switch ((typeOrString as SupportType).type) {
-        case 'View':
-            Comp = View
-            break
-        case 'Text':
-            Comp = Text
-            break
-    }
+    const Comp: React.ComponentType = polyfillComponents[(typeOrString as SupportType).type]
 
     if (Comp === undefined) {
         throw '不支持当前 Component 类型: ' + typeOrString
