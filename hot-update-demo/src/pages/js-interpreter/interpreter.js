@@ -1,7 +1,7 @@
 /* eslint-disable no-shadow */
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-unused-vars */
-import * as acorn from 'acorn'
+import * as acorn from './acorn'
 
 /**
  * @license
@@ -377,12 +377,8 @@ Interpreter.prototype.step = function() {
         } catch (e) {
             // Eat any step errors.  They have been thrown on the stack.
             if (e !== Interpreter.STEP_ERROR) {
-                if (type) {
-                    throw new Error(`${type} are not supported.`)
-                } else {
-                    // Uh oh.  This is a real error in the JS-Interpreter.  Rethrow.
-                    throw e
-                }
+                // Uh oh.  This is a real error in the JS-Interpreter.  Rethrow.
+                throw e
             }
         }
         if (nextState) {

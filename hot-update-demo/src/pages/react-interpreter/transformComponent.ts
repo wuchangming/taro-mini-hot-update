@@ -1,4 +1,5 @@
 import React from 'react'
+import { FuncPrefix } from './constants'
 import { polyfillComponents } from './polyfillComponents'
 
 type SupportType = {
@@ -7,7 +8,7 @@ type SupportType = {
 
 export type CompObj = [SupportType | string, object | null, CompObj[]]
 
-export function arrayToRealComponent(compObj: CompObj) {
+export function transformComponent(compObj: CompObj, invokeInside: (id: string, args: IArguments) => void) {
     if (compObj === null || typeof compObj === 'string') {
         return compObj
     }
@@ -21,6 +22,15 @@ export function arrayToRealComponent(compObj: CompObj) {
     const props = compObj[1]
     const children = compObj[2]
 
+    for (let k in props) {
+        if (new RegExp(`^${FuncPrefix}`).test(props[k])) {
+            const id = props[k]
+            props[k] = function () {
+                invokeInside(id, arguments)
+            }
+        }
+    }
+
     const Comp: React.ComponentType = polyfillComponents[(typeOrString as SupportType).type]
 
     if (Comp === undefined) {
@@ -31,7 +41,7 @@ export function arrayToRealComponent(compObj: CompObj) {
         return React.createElement(Comp, props, children)
     } else if (Array.isArray(children)) {
         const childrenElement = children.map((subCom: CompObj) => {
-            return arrayToRealComponent(subCom)
+            return transformComponent(subCom, invokeInside)
         })
         return React.createElement(Comp, props, ...childrenElement)
     }

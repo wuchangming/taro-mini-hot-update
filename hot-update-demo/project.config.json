@@ -42,6 +42,6 @@
     "useCompilerPlugins": false
   },
   "compileType": "miniprogram",
-  "libVersion": "2.21.4",
+  "libVersion": "2.22.0",
   "condition": {}
 }

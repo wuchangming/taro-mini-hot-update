@@ -6,7 +6,7 @@ export function asynchronousTest(ms: number) {
         interpreter.setProperty(
             globalObject,
             'sleep',
-            interpreter.createAsyncFunction(function xxx(time: number, callback: (res: string) => void) {
+            interpreter.createAsyncFunction(function (time: number, callback: (res: string) => void) {
                 setTimeout(() => {
                     callback('wake up')
                 }, time)
@@ -15,7 +15,7 @@ export function asynchronousTest(ms: number) {
         interpreter.setProperty(
             globalObject,
             'toast',
-            interpreter.createNativeFunction(function XX(title: string) {
+            interpreter.createNativeFunction(function (title: string) {
                 Taro.showToast({
                     icon: 'none',
                     title,

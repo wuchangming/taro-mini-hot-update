@@ -5,7 +5,8 @@ import { globalObjectTest } from '../test-interpreter/globalObjectTest'
 import { basicUsageTest } from '../test-interpreter/basicUsageTest'
 import { addObjectToGlobalObjectTest } from '../test-interpreter/addObjectToGlobalObjectTest'
 import { asynchronousTest } from '../test-interpreter/AsynchronousTest'
-import { FuncComponent, functionComponentTest } from '../test-interpreter/functionComponentTest'
+import { ReactInterpreter } from '../react-interpreter/ReactInterpreter'
+import { basicCode } from '../test-interpreter/basicCode'
 
 class Index extends Component {
     state = {
@@ -45,8 +46,7 @@ class Index extends Component {
                 >
                     toggle Title
                 </Button>
-                {functionComponentTest(this.state.displayTitle)}
-                <FuncComponent displayTitle={this.state.displayTitle}></FuncComponent>
+                <ReactInterpreter code={basicCode} displayTitle={this.state.displayTitle}></ReactInterpreter>
             </View>
         )
     }
