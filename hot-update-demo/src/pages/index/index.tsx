@@ -7,6 +7,8 @@ import { addObjectToGlobalObjectTest } from '../test-interpreter/addObjectToGlob
 import { asynchronousTest } from '../test-interpreter/AsynchronousTest'
 import { ReactInterpreter } from '../react-interpreter/ReactInterpreter'
 import { basicCode } from '../test-interpreter/basicCode'
+import Taro from '@tarojs/taro'
+import * as taroComps from '@tarojs/components'
 
 class Index extends Component {
     state = {
@@ -46,7 +48,17 @@ class Index extends Component {
                 >
                     toggle Title
                 </Button>
-                <ReactInterpreter code={basicCode} displayTitle={this.state.displayTitle}></ReactInterpreter>
+                <ReactInterpreter
+                    globalObjectMap={{
+                        Taro,
+                        console,
+                        // @ts-ignore
+                        wx,
+                    }}
+                    componentMap={taroComps}
+                    code={basicCode}
+                    displayTitle={this.state.displayTitle}
+                ></ReactInterpreter>
             </View>
         )
     }

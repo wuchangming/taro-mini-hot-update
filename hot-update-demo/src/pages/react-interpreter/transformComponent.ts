@@ -1,14 +1,17 @@
 import React from 'react'
 import { FuncPrefix } from './constants'
-import { polyfillComponents } from './polyfillComponents'
 
 type SupportType = {
-    type: keyof typeof polyfillComponents
+    type: string
 }
 
 export type CompObj = [SupportType | string, object | null, CompObj[]]
 
-export function transformComponent(compObj: CompObj, invokeInside: (id: string, args: IArguments) => void) {
+export function transformComponent(
+    polyfillComponents: { [key in string]: any },
+    compObj: CompObj,
+    invokeInside: (id: string, args: IArguments) => void
+) {
     if (compObj === null || typeof compObj === 'string') {
         return compObj
     }
@@ -25,7 +28,7 @@ export function transformComponent(compObj: CompObj, invokeInside: (id: string, 
     for (let k in props) {
         if (new RegExp(`^${FuncPrefix}`).test(props[k])) {
             const id = props[k]
-            props[k] = function () {
+            props[k] = function() {
                 invokeInside(id, arguments)
             }
         }
@@ -41,7 +44,7 @@ export function transformComponent(compObj: CompObj, invokeInside: (id: string, 
         return React.createElement(Comp, props, children)
     } else if (Array.isArray(children)) {
         const childrenElement = children.map((subCom: CompObj) => {
-            return transformComponent(subCom, invokeInside)
+            return transformComponent(polyfillComponents, subCom, invokeInside)
         })
         return React.createElement(Comp, props, ...childrenElement)
     }
