@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 function FuncComponent(props) {
     return /*#__PURE__*/ React.createElement(
         View,

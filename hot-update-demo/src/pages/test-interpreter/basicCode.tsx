@@ -52,8 +52,10 @@ function FuncComponent(props) {
         }
       },
       "\u6309\u94AE"
-    )
+    ),
+    /*#__PURE__*/ React.createElement(Image, {
+      src: "https://www.baidu.com/img/PC_880906d2a4ad95f5fafb2e540c5cdad7.png"
+    })
   );
 }
-
 `

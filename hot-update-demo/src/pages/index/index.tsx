@@ -13,7 +13,21 @@ import * as taroComps from '@tarojs/components'
 class Index extends Component {
     state = {
         displayTitle: true,
+        remoteCode: null,
     }
+
+    componentDidMount = () => {
+        Taro.request({
+            url:
+                'https://cdn.jsdelivr.net/gh/wuchangming/taro-mini-hot-update/hot-update-demo/src/pages/test-interpreter/remoteCode.js',
+        }).then(res => {
+            console.log(res)
+            this.setState({
+                remoteCode: res.data,
+            })
+        })
+    }
+
     render() {
         return (
             <View className='index'>
@@ -58,6 +72,17 @@ class Index extends Component {
                     componentMap={taroComps}
                     code={basicCode}
                     displayTitle={this.state.displayTitle}
+                ></ReactInterpreter>
+                <ReactInterpreter
+                    globalObjectMap={{
+                        Taro,
+                        console,
+                        // @ts-ignore
+                        wx,
+                    }}
+                    componentMap={taroComps}
+                    code={this.state.remoteCode || ''}
+                    displayTitle={!this.state.displayTitle}
                 ></ReactInterpreter>
             </View>
         )

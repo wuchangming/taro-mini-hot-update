@@ -20,7 +20,7 @@ type OutsideMsg = {
 }
 
 type ReactInterpreterProps = {
-    code: string
+    code?: string
     globalObjectMap?: { [key in string]: object }
     componentMap?: { [key in string]: any }
 }
@@ -33,6 +33,9 @@ export function ReactInterpreter<T>(props: T & ReactInterpreterProps) {
     const s = useRef<(msg: OutsideMsg) => void>()
 
     useEffect(() => {
+        if (!props.code) {
+            return
+        }
         const compCode = props.code
             .trim()
             .replace(/^\"use strict\";/, '')
