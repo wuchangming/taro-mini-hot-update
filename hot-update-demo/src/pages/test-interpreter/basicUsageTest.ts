@@ -1,9 +1,9 @@
 import Taro from '@tarojs/taro'
-import Interpreter from '../js-interpreter/interpreter'
+import { JSInterpreter } from 'react-interpreter'
 
 export function basicUsageTest() {
     const code = '6 * 7'
-    const myInterpreter = new Interpreter(code)
+    const myInterpreter = new JSInterpreter(code)
     myInterpreter.run()
 
     Taro.showToast({

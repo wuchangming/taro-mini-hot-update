@@ -5,7 +5,7 @@ import { globalObjectTest } from '../test-interpreter/globalObjectTest'
 import { basicUsageTest } from '../test-interpreter/basicUsageTest'
 import { addObjectToGlobalObjectTest } from '../test-interpreter/addObjectToGlobalObjectTest'
 import { asynchronousTest } from '../test-interpreter/AsynchronousTest'
-import { ReactInterpreter } from '../react-interpreter/ReactInterpreter'
+import { ReactInterpreter } from 'react-interpreter'
 import { basicCode } from '../test-interpreter/basicCode'
 import Taro from '@tarojs/taro'
 import * as taroComps from '@tarojs/components'
@@ -63,25 +63,25 @@ class Index extends Component {
                     toggle Title
                 </Button>
                 <ReactInterpreter
-                    globalObjectMap={{
+                    ri_globalObjectMap={{
                         Taro,
                         console,
                         // @ts-ignore
                         wx,
                     }}
-                    componentMap={taroComps}
-                    code={basicCode}
+                    ri_componentMap={taroComps}
+                    ri_code={basicCode}
                     displayTitle={this.state.displayTitle}
                 ></ReactInterpreter>
                 <ReactInterpreter
-                    globalObjectMap={{
+                    ri_globalObjectMap={{
                         Taro,
                         console,
                         // @ts-ignore
                         wx,
                     }}
-                    componentMap={taroComps}
-                    code={this.state.remoteCode || ''}
+                    ri_componentMap={taroComps}
+                    ri_code={this.state.remoteCode || ''}
                     displayTitle={!this.state.displayTitle}
                 ></ReactInterpreter>
             </View>

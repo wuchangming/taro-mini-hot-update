@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro'
-import Interpreter from '../js-interpreter/interpreter'
+import { JSInterpreter } from 'react-interpreter'
 
 export function globalObjectTest(displayString: string) {
     const myCode = 'toast(path);'
@@ -14,6 +14,6 @@ export function globalObjectTest(displayString: string) {
         }
         interpreter.setProperty(globalObject, 'toast', interpreter.createNativeFunction(wrapper))
     }
-    const myInterpreter = new Interpreter(myCode, initFunc)
+    const myInterpreter = new JSInterpreter(myCode, initFunc)
     myInterpreter.run()
 }

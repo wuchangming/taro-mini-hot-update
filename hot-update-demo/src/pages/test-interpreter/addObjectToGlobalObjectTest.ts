@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro'
-import Interpreter from '../js-interpreter/interpreter'
+import { JSInterpreter } from 'react-interpreter'
 
 export function addObjectToGlobalObjectTest() {
     const myCode = 'Taro.showToast(Taro.version);'
@@ -20,6 +20,6 @@ export function addObjectToGlobalObjectTest() {
             })
         )
     }
-    const myInterpreter = new Interpreter(myCode, initFunc)
+    const myInterpreter = new JSInterpreter(myCode, initFunc)
     myInterpreter.run()
 }
