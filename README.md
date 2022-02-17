@@ -1,8 +1,3 @@
 # taro-mini-hot-update
 
-通过沙箱 JavaScript 解释器的方式，实现微信小程序热更新。
-
-### 灵感来源
-
-[JS-Interpreter](https://github.com/NeilFraser/JS-Interpreter)  
-[jsjs](https://github.com/bramblex/jsjs)
+只是 react-interpreter 的 Taro demo ，可以直接看项目 [react-interpreter](https://github.com/wuchangming/react-interpreter)
