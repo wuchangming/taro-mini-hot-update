@@ -63,25 +63,25 @@ class Index extends Component {
                     toggle Title
                 </Button>
                 <ReactInterpreter
-                    ri_globalObjectMap={{
+                    globalObject={{
                         Taro,
                         console,
                         // @ts-ignore
                         wx,
                     }}
-                    ri_componentMap={taroComps}
-                    ri_code={basicCode}
+                    componentMap={taroComps}
+                    code={basicCode}
                     displayTitle={this.state.displayTitle}
                 ></ReactInterpreter>
                 <ReactInterpreter
-                    ri_globalObjectMap={{
+                    globalObject={{
                         Taro,
                         console,
                         // @ts-ignore
                         wx,
                     }}
-                    ri_componentMap={taroComps}
-                    ri_code={this.state.remoteCode || ''}
+                    componentMap={taroComps}
+                    code={this.state.remoteCode || ''}
                     displayTitle={!this.state.displayTitle}
                 ></ReactInterpreter>
             </View>
