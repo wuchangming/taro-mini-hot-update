@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/wuchangming/taro-mini-hot-update/issues"
   },
-  "homepage": "https://github.com/wuchangming/taro-mini-hot-update#readme"
+  "homepage": "https://github.com/wuchangming/taro-mini-hot-update#readme",
+  "devDependencies": {
+    "eval5": "^1.4.7"
+  }
 }
