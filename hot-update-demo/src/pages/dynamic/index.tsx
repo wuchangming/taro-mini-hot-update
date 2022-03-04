@@ -1,4 +1,4 @@
-// import { createRemotePage } from '../utils/createRemotePage'
+import React from 'react'
 import { View } from '@tarojs/components'
 import { Component, ElementType } from 'react'
 
