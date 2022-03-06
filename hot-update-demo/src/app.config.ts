@@ -1,5 +1,6 @@
 export default defineAppConfig({
   pages: [
+    'pages/index',
     'pages/dynamic/indexCompile',
     'pages/dynamic/index',
   ],
