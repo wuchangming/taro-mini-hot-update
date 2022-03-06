@@ -85,5 +85,5 @@ export default createRemotePage({
             </View>
         )
     },
-    // preFetch: false,
+    preFetch: false,
 })

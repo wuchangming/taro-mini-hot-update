@@ -30,7 +30,7 @@ export function createRemotePage(options: CreateRemotePageOptions) {
     return class RemotePageWrapper extends Component {
         constructor(props: any) {
             super(props)
-            if (!opts.preFetch) {
+            if (getPagePromise === undefined) {
                 getPagePromise = makeQueryablePromise(opts.getPage())
             } else if (getPagePromise?.isRejected()) {
                 // 重试
