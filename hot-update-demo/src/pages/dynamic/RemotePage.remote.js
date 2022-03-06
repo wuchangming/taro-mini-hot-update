@@ -34,6 +34,12 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _components = require("@tarojs/components");
 
+var _taro = _interopRequireDefault(require("@tarojs/taro"));
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
 function _getRequireWildcardCache(nodeInterop) {
   if (typeof WeakMap !== "function") return null;
   var cacheBabelInterop = new WeakMap();
@@ -183,15 +189,61 @@ function _getPrototypeOf(o) {
   return _getPrototypeOf(o);
 }
 
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
+
 var _default = /*#__PURE__*/ (function (_Component) {
   _inherits(_default, _Component);
 
   var _super = _createSuper(_default);
 
   function _default() {
+    var _this;
+
     _classCallCheck(this, _default);
 
-    return _super.apply(this, arguments);
+    for (
+      var _len = arguments.length, args = new Array(_len), _key = 0;
+      _key < _len;
+      _key++
+    ) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty(
+      _assertThisInitialized(_this),
+      "componentDidMount",
+      function () {
+        console.log("componentDidMount");
+
+        _taro.default.setNavigationBarTitle({
+          title: "这是个远程页面"
+        });
+      }
+    );
+
+    _defineProperty(
+      _assertThisInitialized(_this),
+      "onShareAppMessage",
+      function () {
+        return {};
+      }
+    );
+
+    return _this;
   }
 
   _createClass(_default, [
@@ -217,6 +269,5 @@ var _default = /*#__PURE__*/ (function (_Component) {
 })(_react.Component);
 
 exports.default = _default;
-
 
 `

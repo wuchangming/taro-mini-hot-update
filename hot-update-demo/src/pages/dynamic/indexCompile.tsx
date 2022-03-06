@@ -43,6 +43,11 @@ function createRemotePage(p: Promise<{ default: any }>) {
             })
         }
 
+        // 强行触发分享事件，用户没有再关掉
+        onShareAppMessage() {
+            return {}
+        }
+
         render = () => {
             const RemotePage = this.state.RemotePage
             return RemotePage ? (
@@ -67,13 +72,14 @@ const fakeRequest = async () => {
 
     const exports: any = {}
 
-    // fake require('@tarojs/components')
     const fakeRequire = (path: string) => {
         switch (path) {
             case '@tarojs/components':
                 return require('@tarojs/components')
             case 'react':
                 return require('react')
+            case '@tarojs/taro':
+                return require('@tarojs/taro')
         }
     }
 
