@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { View } from '@tarojs/components'
 
-const RemotePage = () => {
-    return <View>This is RemotePage</View>
+export default class extends Component {
+    componentDidShow () {
+        console.log('componentDidShow');        
+    }
+    render() {
+        return <View>this is RemotePage</View>
+    }
 }
-
-export default RemotePage
