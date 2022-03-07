@@ -3,6 +3,7 @@ export default defineAppConfig({
     'pages/index',
     'pages/dynamic/indexCompile',
     'pages/dynamic/index',
+    'pages/dynamic/simple'
   ],
   window: {
     backgroundTextStyle: 'light',
