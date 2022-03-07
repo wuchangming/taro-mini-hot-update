@@ -21,7 +21,10 @@ const fakeRequest = async () => {
     }
 
     const interpreter = new Interpreter({ exports, require: fakeRequire }, { rootContext: globalThis })
+    const startTime = new Date()
     interpreter.evaluate(remoteString)
+    console.log('eval5 耗时' + (new Date().getTime() - startTime.getTime()))
+
     return exports
 }
 
