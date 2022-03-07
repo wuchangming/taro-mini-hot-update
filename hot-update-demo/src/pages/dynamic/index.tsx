@@ -11,8 +11,7 @@ export default createRemotePage({
             // 随机出错
             throw 'error'
         }
-        const RemotePage = (await import('./RemotePage')).default
-        return RemotePage
+        return import('./RemotePage')
     },
     onLoading: () => {
         return () => <View>Loading...</View>

@@ -4,24 +4,24 @@ import { taroPageLifecycleNames } from './utils/taroPageLifecycleNames'
 import Taro from '@tarojs/taro'
 
 type OriginCreateRemotePageOptions = {
-    getPage: () => Promise<ElementType>
+    getPage: () => Promise<{ default: ElementType }>
     onFinish?: () => void
     onLoading?: () => ElementType
     onError?: (reload: () => void) => ElementType
     preFetch?: boolean
 }
 
-export type CreateRemotePageOptions = (() => Promise<ElementType>) | OriginCreateRemotePageOptions
+export type CreateRemotePageOptions = (() => Promise<{ default: ElementType }>) | OriginCreateRemotePageOptions
 
 export function createRemotePage(options: CreateRemotePageOptions) {
     const opts: OriginCreateRemotePageOptions = {
         preFetch: true,
         ...(typeof options === 'function'
-            ? { getPage: options as () => Promise<ElementType> }
+            ? { getPage: options as () => Promise<{ default: ElementType }> }
             : (options as OriginCreateRemotePageOptions)),
     }
 
-    let getPagePromise: (Promise<ElementType> & QueryableProps) | undefined = undefined
+    let getPagePromise: (Promise<{ default: ElementType }> & QueryableProps) | undefined = undefined
 
     if (opts.preFetch) {
         getPagePromise = makeQueryablePromise(opts.getPage())
@@ -56,7 +56,7 @@ export function createRemotePage(options: CreateRemotePageOptions) {
             })
 
             getPagePromise?.then(
-                RemotePage => {
+                ({ default: RemotePage }) => {
                     this.setState({
                         RemotePage,
                         status: 'resolved',

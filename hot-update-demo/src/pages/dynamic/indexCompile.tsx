@@ -28,6 +28,4 @@ const fakeRequest = async () => {
     return exports
 }
 
-export default createRemotePage(async () => {
-    return (await fakeRequest()).default
-})
+export default createRemotePage(() => fakeRequest())
