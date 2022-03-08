@@ -1,4 +1,4 @@
-import { createRemotePage } from '../mini-hot/createRemotePage'
+import { createRemotePage } from '@mini-hot/taro'
 
 /**
  * 简单用法

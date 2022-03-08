@@ -1220,6 +1220,13 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
+"@mini-hot/taro@0.0.1-beta.1":
+  version "0.0.1-beta.1"
+  resolved "https://registry.yarnpkg.com/@mini-hot/taro/-/taro-0.0.1-beta.1.tgz#33588c0a0577b558ea3588aef6e56e83e255c42b"
+  integrity sha512-g3ZHLLAatVVop0vKH/T1dFj6ZVKVfJAMC+AAh7ivQkxFVUvyUKc3jrCx1OYe7SfgQhVMHQYO/jWXU70OfwjBMA==
+  dependencies:
+    "@babel/runtime" "^7.17.2"
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.npmmirror.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"

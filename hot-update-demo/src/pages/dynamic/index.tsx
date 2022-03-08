@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, View } from '@tarojs/components'
-import { createRemotePage } from '../mini-hot/createRemotePage'
+import { createRemotePage } from '@mini-hot/taro'
 
 export default createRemotePage({
     getPage: async () => {

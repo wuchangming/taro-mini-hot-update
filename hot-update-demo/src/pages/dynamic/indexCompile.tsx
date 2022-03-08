@@ -1,4 +1,4 @@
-import { createRemotePage } from '../mini-hot/createRemotePage'
+import { createRemotePage } from '@mini-hot/taro'
 
 const fakeRequest = async () => {
     await new Promise(res => {
